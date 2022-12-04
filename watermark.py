@@ -29,18 +29,18 @@ def main():
     
         elif watermark_choose[0].upper() == 'C':
             
-            img_to_watermark = provide_image()
+            img_to_watermark, img = provide_image()
             chosen_color = choose_color()
             
             width, height = img_to_watermark.size
             created_text = input("Write the text you want to appear in your watermark: ")   
-            font = ImageFont.truetype(font="arial.ttf",size=20)
+            font = ImageFont.truetype(font="arial.ttf",size=40)
             draw = ImageDraw.Draw(img_to_watermark)
             text_w, text_h = draw.textsize(created_text,font=font)
             draw.text((width-text_w,height-text_h),created_text,fill=chosen_color,font=font,align="right")
             print("Your image has been watermarked")
             img_to_watermark.show()
-            img_to_watermark.save("watermarked_image.png")
+            img_to_watermark.save("water_marked_images/WM_"+img)
             
             repeat = do_you_want_to_repeat()
             if repeat == "yes":
@@ -61,7 +61,7 @@ def provide_watermark():
 def provide_image():
     while True:
         try:
-            img = input("Choose the image you want to matermark.\nWrite the path to it or it's name if it's in the same folder: ")
+            img = input("Choose the image you want to watermark.\nWrite the path to it or it's name if it's in the same folder: ")
             img_to_watermark = Image.open(img)
         except FileNotFoundError:
             print('No such file or directory, try again')
