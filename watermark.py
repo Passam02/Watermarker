@@ -66,7 +66,7 @@ def provide_image():
             print('No such file or directory, try again')
         else:
             break
-    return img_to_watermark,img.split('\\')[-1]
+    return img_to_watermark,img.replace('/', '\\').split('\\')[-1]
 
 def choose_color():
     colors = {"black":(0,0,0), "white":(255,255,255), "green":(0,204,0), "orange":(255,165,0), "pink":(255, 179, 190), "navy":(0, 0, 128), "cyan":(0, 255, 255), "purple":(153, 0, 153), "red":(255, 0, 0), "brown":(122, 31, 31)}
